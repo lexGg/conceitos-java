@@ -17,5 +17,16 @@ public class ExemploFileWriter {
             // Trata a exceção de IO, caso ocorra algum erro na escrita do arquivo
             System.out.println("Ocorreu um erro ao tentar escrever no arquivo: " + e.getMessage());
         }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("arquivo.txt", true))) {
+            // Cria um BufferedWriter, que recebe um FileWriter com a flag "true" para adicionar conteúdo ao arquivo existente
+            // O uso do try-with-resources garante que o BufferedWriter será fechado automaticamente
+
+            // Escreve mais texto no arquivo, adicionando ao conteúdo existente
+            writer.write(" - Exemplo adicional");
+        } catch (IOException e) {
+            // Trata a exceção de IO, caso ocorra algum erro na escrita do arquivo
+            System.out.println("Ocorreu um erro ao tentar escrever no arquivo: " + e.getMessage());
+        }
     }
 }
